@@ -20,8 +20,4 @@ runs:
   using: "docker"
   image: "Dockerfile"
   args: 
-    - apps
-    - --gha
-    - ${{ inputs.shortid }}
-    - -u
-    - ${{ inputs.file_location }}
+    - apps --gha ${{ inputs.shortid }} -u ${{ inputs.file_location }}
