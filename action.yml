@@ -1,0 +1,27 @@
+name: "CGC App Deploy"
+description: "Upload new app version to Cancer Genomics Cloud"
+inputs:
+  file_location: # id of input
+    description: "Relative app CWL file in repository"
+    required: true
+    default: "./cgc.yaml"
+  shortid: # id of input
+    description: "App ShortID from CGC"
+    required: true
+    default: "{project_owner}/{project_short_name}/{app_short_name}"
+  devkey: # id of input
+    description: "CGC developers key"
+    required: false
+    default: "abc123"
+outputs:
+  status: 
+    description: "Short ID of newly deployed application"
+runs:
+  using: "docker"
+  image: "Dockerfile"
+  args: 
+    - "apps"
+    - "--gha"
+    - ${{ inputs.shortid }}
+    - "-u"
+    - ${{ inputs.file_location }}
