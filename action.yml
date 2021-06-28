@@ -21,7 +21,7 @@ runs:
   image: "Dockerfile"
   args: 
     - apps 
-    - --gha 
     - ${{ inputs.shortid }} 
+    - --gha 
     - -u
     - ${{ inputs.file_location }}
